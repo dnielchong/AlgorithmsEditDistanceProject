@@ -1,0 +1,111 @@
+   compile
+gcc -g spell_checker.c spell.c
+   run
+valgrind --leak-check=full  ./a.out
+
+==104== Memcheck, a memory error detector
+==104== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==104== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==104== Command: ./a.out
+==104==
+
+Part 1 - edit distance table
+ Repeatedly enter two words separated by a space (e.g.: cat someone).
+ Stop with: -1 -1
+-1 -1
+
+ first: -1
+second: -1
+
+Part 2 - spell check
+Enter the dictionary file name: dbig.txt
+Enter the test file name: list1.txt
+
+Loaded dictionary dbig.txt has size: 10000
+
+---> |furge|
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 1
+     Words that give minimum distance:
+ 1 - surge
+ 2 - forge
+ 3 - urge
+Enter your choice: 2
+The corrected word is: forge
+
+---> |cries|
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 1
+     Words that give minimum distance:
+ 1 - crimes
+ 2 - tries
+Enter your choice: 1
+The corrected word is: crimes
+
+---> |ariest|
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 1
+     Words that give minimum distance:
+ 1 - arrest
+ 2 - priest
+Enter your choice: 1
+The corrected word is: arrest
+
+---> |yous|
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 1
+     Words that give minimum distance:
+ 1 - you
+ 2 - your
+ 3 - yours
+Enter your choice: 3
+The corrected word is: yours
+
+---> |fives|
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 1
+     Words that give minimum distance:
+ 1 - files
+ 2 - five
+ 3 - gives
+ 4 - lives
+ 5 - fixes
+ 6 - fires
+ 7 - wives
+Enter your choice: 4
+The corrected word is: lives
+
+---> |teh|
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 1
+     Words that give minimum distance:
+ 1 - tech
+ 2 - tel
+ 3 - ten
+ 4 - th
+ 5 - tea
+ 6 - te
+ 7 - tee
+ 8 - ted
+ 9 - tex
+ 10 - eh
+Enter your choice: -1
+Enter correct word: the
+The corrected word is: the
+
+Good bye!
+==104==
+==104== HEAP SUMMARY:
+==104==     in use at exit: 0 bytes in 0 blocks
+==104==   total heap usage: 10,007 allocs, 10,007 frees, 167,072 bytes allocated
+==104==
+==104== All heap blocks were freed -- no leaks are possible
+==104==
+==104== For lists of detected and suppressed errors, rerun with: -s
+==104== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

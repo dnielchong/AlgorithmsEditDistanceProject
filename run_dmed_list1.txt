@@ -1,0 +1,99 @@
+    compile:
+gcc -g spell_checker.c spell_short_B.c
+   run:
+valgrind --leak-check=full ./a.out
+valgrind --leak-check=full  ./a.out
+==88== Memcheck, a memory error detector
+==88== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==88== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==88== Command: ./a.out
+==88==
+
+Part 1 - edit distance table
+ Repeatedly enter two words separated by a space (e.g.: cat someone).
+ Stop with: -1 -1
+-1 -1
+
+ first: -1
+second: -1
+
+Part 2 - spell check
+Enter the dictionary file name: dmed.txt
+Enter the test file name: list1.txt
+
+Loaded dictionary dmed.txt has size: 1003
+
+---> |furge|
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 2
+     Words that give minimum distance:
+ 1 - large
+ 2 - sure
+ 3 - fire
+ 4 - free
+ 5 - force
+ 6 - huge
+Enter your choice: -3
+Invalid choice. Original word will be kept.
+The corrected word is: furge
+
+---> |cries|
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 2
+     Words that give minimum distance:
+ 1 - cross
+ 2 - chief
+Enter your choice: 4
+Invalid choice. Original word will be kept.
+The corrected word is: cries
+
+---> |ariest|
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 2
+     Words that give minimum distance:
+ 1 - rest
+Enter your choice: 0
+The corrected word is: ariest
+
+---> |yous|
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 1
+     Words that give minimum distance:
+ 1 - you
+ 2 - your
+Enter your choice: 2
+The corrected word is: your
+
+---> |fives|
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 1
+     Words that give minimum distance:
+ 1 - five
+Enter your choice: 1
+The corrected word is: five
+
+---> |teh|
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 1
+     Words that give minimum distance:
+ 1 - ten
+Enter your choice: -1
+Enter correct word: the
+The corrected word is: the
+
+Good bye!
+==88==
+==88== HEAP SUMMARY:
+==88==     in use at exit: 0 bytes in 0 blocks
+==88==   total heap usage: 1,010 allocs, 1,010 frees, 25,063 bytes allocated
+==88==
+==88== All heap blocks were freed -- no leaks are possible
+==88==
+==88== For lists of detected and suppressed errors, rerun with: -s
+==88== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
