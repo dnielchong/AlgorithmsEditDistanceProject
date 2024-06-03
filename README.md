@@ -1,2 +1,2 @@
 # AlgorithmsProject
-A project developed in algorithms class that involves the use of Adjacency Matrix, Depth-first search, Topological sorting, and edit distance. 
+A project developed in algorithms class involving Edit distance and finding the minimum distance. The project also includes file handling and memory allocation to allow the user to fix misspelled words.
